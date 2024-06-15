@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>teste</title>
+	<style>
+		canvas{
+			border: 5px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="prompt"></h1>
+	<div>
+		<canvas id="canvas1" width="200" height="200"></canvas>
+		<canvas id="canvas2" width="200" height="200"></canvas>
+		<canvas id="canvas3" width="200" height="200"></canvas>
+	</div>
+
+	<div>
+		<canvas id="canvas4" width="200" height="200"></canvas>
+		<canvas id="canvas5" width="200" height="200"></canvas>
+		<canvas id="canvas6" width="200" height="200"></canvas>
+	</div>
+
+	<div>
+		<canvas id="canvas7" width="200" height="200"></canvas>
+		<canvas id="canvas8" width="200" height="200"></canvas>
+		<canvas id="canvas9" width="200" height="200"></canvas>
+	</div>
+
+	<script >
+		var canvas1=document.getElementById("canvas1");
+		var ctx1=canvas1.getContext("2d");
+
+		var canvas2=document.getElementById("canvas2");
+		var ctx2=canvas2.getContext("2d");
+
+		var canvas3=document.getElementById("canvas3");
+		var ctx3=canvas3.getContext("2d");
+
+		var canvas4=document.getElementById("canvas4");
+		var ctx4=canvas4.getContext("2d");
+
+		var canvas5=document.getElementById("canvas5");
+		var ctx5=canvas5.getContext("2d");
+
+		var canvas6=document.getElementById("canvas6");
+		var ctx6=canvas6.getContext("2d");
+
+		var canvas7=document.getElementById("canvas7");
+		var ctx7=canvas7.getContext("2d");
+
+		var canvas8=document.getElementById("canvas8");
+		var ctx8=canvas8.getContext("2d");
+
+		var canvas9=document.getElementById("canvas9");
+		var ctx9=canvas9.getContext("2d");
+
+		var prompt=document.getElementById("prompt");
+
+		var jogador = "Jogador 1";
+		var empate = true;
+		var cont = 0;
+		var tabelaJogo = [
+		[0,0,0],
+		[0,0,0],
+		[0,0,0]
+		];
+
+		function rodada(){
+			if(jogador == "Jogador 2"){
+				prompt.innerText = "Jogador 1: x";
+			}else{
+				prompt.innerText = "Jogador 2: circulo";
+			}
+		}
+		function testeVitoria(){
+			rodada();
+			for(let i=1;i<3;i++){
+				if(tabelaJogo[0][0] == i && tabelaJogo[0][1] == i && tabelaJogo[0][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[1][0] == i && tabelaJogo[1][1] == i && tabelaJogo[1][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[2][0] == i && tabelaJogo[2][1] == i && tabelaJogo[2][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[0][0] == i && tabelaJogo[1][0] == i && tabelaJogo[2][0] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[0][1] == i && tabelaJogo[1][1] == i && tabelaJogo[2][1] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[0][2] == i && tabelaJogo[1][2] == i && tabelaJogo[2][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[0][0] == i && tabelaJogo[1][1] == i && tabelaJogo[2][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(tabelaJogo[2][0] == i && tabelaJogo[1][1] == i && tabelaJogo[0][2] == i){
+					empate = false;
+					prompt.innerText = "Vitória do "+jogador;
+				}else if(cont == 9 && empate){
+					prompt.innerText = "Deu velha!";
+				}
+			}
+		}
+		function amarelo(){
+			while(tabelaJogo[0][0] == 0){
+				if(jogador == "Jogador 1"){
+					ctx1.moveTo(20,20);
+					ctx1.lineTo(180,180);
+					ctx1.moveTo(180,20);
+					ctx1.lineTo(20,180);
+					ctx1.lineWidth = 30;
+					ctx1.strokeStyle = "black";
+					ctx1.stroke();
+					tabelaJogo[0][0] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx1.beginPath();
+					ctx1.arc(100,100,70,0,2*Math.PI);
+					ctx1.strokeStyle = "black";
+					ctx1.lineWidth = 30;
+					ctx1.stroke();
+					tabelaJogo[0][0] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function verde(){
+			while(tabelaJogo[0][1] == 0){
+				if(jogador == "Jogador 1"){
+					ctx2.moveTo(20,20);
+					ctx2.lineTo(180,180);
+					ctx2.moveTo(180,20);
+					ctx2.lineTo(20,180);
+					ctx2.lineWidth = 30;
+					ctx2.strokeStyle = "black";
+					ctx2.stroke();
+					tabelaJogo[0][1] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx2.beginPath();
+					ctx2.arc(100,100,70,0,2*Math.PI);
+					ctx2.strokeStyle = "black";
+					ctx2.lineWidth = 30;
+					ctx2.stroke();
+					tabelaJogo[0][1] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function azul(){
+			while(tabelaJogo[0][2] == 0){
+				if(jogador == "Jogador 1"){
+					ctx3.moveTo(20,20);
+					ctx3.lineTo(180,180);
+					ctx3.moveTo(180,20);
+					ctx3.lineTo(20,180);
+					ctx3.lineWidth = 30;
+					ctx3.strokeStyle = "black";
+					ctx3.stroke();
+					tabelaJogo[0][2] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx3.beginPath();
+					ctx3.arc(100,100,70,0,2*Math.PI);
+					ctx3.strokeStyle = "black";
+					ctx3.lineWidth = 30;
+					ctx3.stroke();
+					tabelaJogo[0][2] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function vermelho(){
+			while(tabelaJogo[1][0] == 0){
+				if(jogador == "Jogador 1"){
+					ctx4.moveTo(20,20);
+					ctx4.lineTo(180,180);
+					ctx4.moveTo(180,20);
+					ctx4.lineTo(20,180);
+					ctx4.lineWidth = 30;
+					ctx4.strokeStyle = "black";
+					ctx4.stroke();
+					tabelaJogo[1][0] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx4.beginPath();
+					ctx4.arc(100,100,70,0,2*Math.PI);
+					ctx4.strokeStyle = "black";
+					ctx4.lineWidth = 30;
+					ctx4.stroke();
+					tabelaJogo[1][0] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function rosa(){
+			while(tabelaJogo[1][1] == 0){
+				if(jogador == "Jogador 1"){
+					ctx5.moveTo(20,20);
+					ctx5.lineTo(180,180);
+					ctx5.moveTo(180,20);
+					ctx5.lineTo(20,180);
+					ctx5.lineWidth = 30;
+					ctx5.strokeStyle = "black";
+					ctx5.stroke();
+					tabelaJogo[1][1] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx5.beginPath();
+					ctx5.arc(100,100,70,0,2*Math.PI);
+					ctx5.strokeStyle = "black";
+					ctx5.lineWidth = 30;
+					ctx5.stroke();
+					tabelaJogo[1][1] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function laranja(){
+			while(tabelaJogo[1][2] == 0){
+				if(jogador == "Jogador 1"){
+					ctx6.moveTo(20,20);
+					ctx6.lineTo(180,180);
+					ctx6.moveTo(180,20);
+					ctx6.lineTo(20,180);
+					ctx6.lineWidth = 30;
+					ctx6.strokeStyle = "black";
+					ctx6.stroke();
+					tabelaJogo[1][2] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx6.beginPath();
+					ctx6.arc(100,100,70,0,2*Math.PI);
+					ctx6.strokeStyle = "black";
+					ctx6.lineWidth = 30;
+					ctx6.stroke();
+					tabelaJogo[1][2] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function roxo(){
+			while(tabelaJogo[2][0] == 0){
+				if(jogador == "Jogador 1"){
+					ctx7.moveTo(20,20);
+					ctx7.lineTo(180,180);
+					ctx7.moveTo(180,20);
+					ctx7.lineTo(20,180);
+					ctx7.lineWidth = 30;
+					ctx7.strokeStyle = "black";
+					ctx7.stroke();
+					tabelaJogo[2][0] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx7.beginPath();
+					ctx7.arc(100,100,70,0,2*Math.PI);
+					ctx7.strokeStyle = "black";
+					ctx7.lineWidth = 30;
+					ctx7.stroke();
+					tabelaJogo[2][0] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function cinza(){
+			while(tabelaJogo[2][1] == 0){
+				if(jogador == "Jogador 1"){
+					ctx8.moveTo(20,20);
+					ctx8.lineTo(180,180);
+					ctx8.moveTo(180,20);
+					ctx8.lineTo(20,180);
+					ctx8.lineWidth = 30;
+					ctx8.strokeStyle = "black";
+					ctx8.stroke();
+					tabelaJogo[2][1] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx8.beginPath();
+					ctx8.arc(100,100,70,0,2*Math.PI);
+					ctx8.strokeStyle = "black";
+					ctx8.lineWidth = 30;
+					ctx8.stroke();
+					tabelaJogo[2][1] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function marrom(){
+			while(tabelaJogo[2][2] == 0){
+				if(jogador == "Jogador 1"){
+					ctx9.moveTo(20,20);
+					ctx9.lineTo(180,180);
+					ctx9.moveTo(180,20);
+					ctx9.lineTo(20,180);
+					ctx9.lineWidth = 30;
+					ctx9.strokeStyle = "black";
+					ctx9.stroke();
+					tabelaJogo[2][2] = 1;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 2";
+				}else{
+					ctx9.beginPath();
+					ctx9.arc(100,100,70,0,2*Math.PI);
+					ctx9.strokeStyle = "black";
+					ctx9.lineWidth = 30;
+					ctx9.stroke();
+					tabelaJogo[2][2] = 2;
+					cont++;
+					testeVitoria();
+					jogador = "Jogador 1";
+				}
+			}
+		}
+		function quadro(){
+			ctx1.fillStyle="yellow";
+			ctx1.fillRect(0,0,200,200);
+
+			ctx2.beginPath();
+			ctx2.fillStyle="green";
+			ctx2.fillRect(0,0,200,200);
+
+			ctx3.beginPath();
+			ctx3.fillStyle="blue";
+			ctx3.fillRect(0,0,200,200);
+
+			ctx4.beginPath();
+			ctx4.fillStyle="red";
+			ctx4.fillRect(0,0,200,200);
+
+			ctx5.beginPath();
+			ctx5.fillStyle="pink";
+			ctx5.fillRect(0,0,200,200);
+
+			ctx6.beginPath();
+			ctx6.fillStyle="orange";
+			ctx6.fillRect(0,0,200,200);
+
+			ctx7.beginPath();
+			ctx7.fillStyle="purple";
+			ctx7.fillRect(0,0,200,200);
+
+			ctx8.beginPath();
+			ctx8.fillStyle="grey";
+			ctx8.fillRect(0,0,200,200);
+
+			ctx9.beginPath();
+			ctx9.fillStyle="brown";
+			ctx9.fillRect(0,0,200,200);
+		}
+		prompt.innerText = "Jogador 1: x";
+		quadro();
+		canvas1.addEventListener("click",amarelo);
+		canvas1.addEventListener("touchstart",amarelo);
+		canvas2.addEventListener("click",verde);
+		canvas2.addEventListener("touchstar",verde);
+		canvas3.addEventListener("click",azul);
+		canvas3.addEventListener("touchstart",azul);
+		canvas4.addEventListener("click",vermelho);
+		canvas4.addEventListener("touchstart",vermelho);
+		canvas5.addEventListener("click",rosa);
+		canvas5.addEventListener("touchstart",rosa);
+		canvas6.addEventListener("click",laranja);
+		canvas6.addEventListener("touchstart",laranja);
+		canvas7.addEventListener("click",roxo);
+		canvas7.addEventListener("touchstart",roxo);
+		canvas8.addEventListener("click",cinza);
+		canvas8.addEventListener("touchstart",cinza);
+		canvas9.addEventListener("click",marrom);
+		canvas9.addEventListener("touchstart",marrom);
+	</script>
+</body>
+</html>

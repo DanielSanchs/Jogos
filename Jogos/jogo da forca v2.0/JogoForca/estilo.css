@@ -1,0 +1,131 @@
+header{
+    display: flex;
+    background-color: rgb(248, 248, 239);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#imagem{
+    background-image: url("forca1.png");
+    width: 234px;
+    height: 272px;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+
+#palavra-secreta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    margin-left: 50px;
+    flex-direction: row;
+}
+
+.letras{
+    width: 20px;
+    text-align: center;
+    border-bottom: 3px solid rgb(73, 13, 97);
+    margin-left: 3px;
+    margin-right: 3px;
+    font-size: 20px;
+}
+
+#teclado{
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.teclas button{
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px rgb(111, 255, 123);
+    border-radius: 5px;
+    border: 1px solid gray;
+    color: rgb(86, 31, 138);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+
+
+.teclas button:disabled{
+    cursor:not-allowed ;
+}
+
+.butao button{
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: rgb(182, 104, 255);
+}
+
+#categoria{
+    margin-top: 50px;
+    color: rgb(86, 31, 138);
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(107, 53, 158);
+    
+}
+
+img{
+    width: 300px;
+    height: 300px;
+}
+
+h2{
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
+    color:  rgb(124, 209, 55);
+    
+}
+
+
+div{
+    padding: 5px;
+    
+    display: flex;
+    background-color: rgb(248, 248, 239);
+    color: rgb(73, 13, 97);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.selecao > input{
+    width: 1.5em;
+    background-color: rgb(226, 238, 214);
+    margin-right: 15px;
+    font-size: 4em;
+    text-align: center;
+}
+
+footer{
+    background-color: rgb(163, 121, 184);
+    height: 100px;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(250, 241, 255);
+    margin: 0px;
+    padding: 20px;
+}

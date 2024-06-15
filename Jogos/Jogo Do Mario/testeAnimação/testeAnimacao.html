@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste de Animação</title>
+	<style>
+		#canvas_animacao{
+			border: 2px black solid;
+		}
+	</style>
+
+	<script src="animacao.js"></script>
+	<script src="bloco.js"></script>
+</head>
+<body>
+	<canvas id="canvas_animacao" width="500" height="500"></canvas>
+
+	<script>
+		var context = document.getElementById("canvas_animacao").getContext("2d");
+
+		var bloco = new Bloco(context);
+		var animacao = new Animacao(context);
+
+		bloco.largura = 30;
+		bloco.altura = 60;
+		bloco.velocidade = 5;
+		bloco.cor = "red";
+		bloco.y = 200;
+
+		animacao.novoSprite(bloco);
+
+		animacao.ligar();
+	</script>
+</body>
+</html>

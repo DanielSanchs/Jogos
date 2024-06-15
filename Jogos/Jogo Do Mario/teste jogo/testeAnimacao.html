@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste de Animação</title>
+	<style>
+		#canvas_animacao{
+			border: 2px black solid;
+		}
+	</style>
+
+	<script src="animacao.js"></script>
+	<script src="bloco.js"></script>
+	<script src="teclado.js"></script>
+</head>
+<body>
+	<canvas id="canvas_animacao" width="500" height="500"></canvas>
+
+	<script>
+		var context = document.getElementById("canvas_animacao").getContext("2d");
+
+		//criar os objetos
+		var teclado = new Teclado(document);
+		var bloco = new Bloco(context, teclado);
+		var animacao = new Animacao(context);
+
+		//definir os atributos dos objetos
+		bloco.largura = 30;
+		bloco.altura = 60;
+		bloco.velocidade = 5;
+		bloco.cor = "red";
+
+		//integrando os objetos
+		animacao.novoSprite(bloco);
+
+		//criando as interações
+		teclado.disparou(SETA_ACIMA, function(){
+			bloco.pular();
+		});
+
+		animacao.ligar();
+	</script>
+</body>
+</html>

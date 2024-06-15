@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste de Animação</title>
+	<style>
+		#canvas_animacao{
+			border: 2px black solid;
+			cursor: url(img/mira.png),auto;
+		}
+
+	</style>
+
+	<script src="animacao.js"></script>
+	<script src="bloco.js"></script>
+	<script src="teclado.js"></script>
+	<script src="perseguidor.js"></script>
+	<script src="adaga.js"></script>
+	<script src="mouse.js"></script>
+	<script src="espada.js"></script>
+
+</head>
+<body>
+	<canvas id="canvas_animacao" width="500" height="500"></canvas>
+	<div id="sdfghj"></div>
+	<div id="sdfgh"></div>
+	<script>
+		var context = document.getElementById("canvas_animacao").getContext("2d");
+
+		var teclado = new Teclado(document);
+		var animacao = new Animacao(context);
+		var bloco = new Bloco(context, teclado);
+		var perseguidor = new Perseguidor(context);
+		var espada = new Espada(context, bloco);
+		var mouse = new Mouse(bloco, espada);
+		
+
+		bloco.largura = 30;
+		bloco.altura = 30;
+		bloco.velocidade = 5;
+		bloco.cor = "blue";
+		bloco.x = 200
+		bloco.y = 400;
+		bloco.animacao = animacao;
+
+		perseguidor.largura = 30;
+		perseguidor.altura = 30;
+		perseguidor.velocidade = 5;
+		perseguidor.cor = "red";
+		perseguidor.y = 100;
+		perseguidor.x = 400;
+		perseguidor.bloco = bloco;
+		perseguidor.velocidade = 2;
+		
+		espada.cor = "yellow";
+		espada.largura = 50;
+		espada.altura = 9;
+		espada.velocidade = 15;
+		
+		animacao.novoSprite(bloco);
+		animacao.novoSprite(perseguidor);
+		animacao.novoSprite(espada);
+
+		animacao.ligar();
+	</script>
+</body>
+</html>
